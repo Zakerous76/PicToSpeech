@@ -11,4 +11,6 @@
     <string name="decrease">Decrease</string>
     <string name="increase">Increase</string>
     <string name="default_speech_rate">x1.0</string>
+    <string name="upload_a_photo">Upload a Photo</string>
+    <string name="take_a_photo">Take a Photo</string>
 </resources>
