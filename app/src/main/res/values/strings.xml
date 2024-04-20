@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PicToSpeech</string>
+    <string name="subtitle">Reader companion for the visually impaired</string>
+    <string name="scan_a_pic">Scan a Picture</string>
+    <string name="options">Options</string>
+    <string name="voice_assistant">Voice Assistant</string>
+    <string name="voice_assistant_on">Voice Assistant (ON)</string>
+    <string name="voice_assistant_off">Voice Assistant (OFF)</string>
+    <string name="modify_speech_rate">Modify Speech Rate</string>
+    <string name="voice_assistant_description">Voice Assistant on/off toggle button</string>
+    <string name="decrease">Decrease</string>
+    <string name="increase">Increase</string>
+    <string name="default_speech_rate">x1.0</string>
 </resources>

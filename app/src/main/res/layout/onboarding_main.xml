@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/options_btn"
+        android:layout_width="412dp"
+        android:layout_height="225dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/subtitle_txtV"
+        android:background="@color/button_gray"
+        android:text="@string/options"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/app_name_title_txtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <TextView
+        android:id="@+id/subtitle_txtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/app_name_title_txtV"
+        android:text="@string/subtitle"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/app_name_title_txtV"
+        app:layout_constraintStart_toStartOf="@+id/app_name_title_txtV"
+        app:layout_constraintTop_toBottomOf="@+id/app_name_title_txtV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/scan_a_pic_btn"
+        android:layout_width="412dp"
+        android:layout_height="225dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/options_btn"
+        android:background="@color/button_gray"
+        android:text="@string/scan_a_pic"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
