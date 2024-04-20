@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/options_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="225dp"
         android:accessibilityLiveRegion="polite"
         android:accessibilityTraversalAfter="@id/subtitle_txtV"
@@ -52,7 +52,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/scan_a_pic_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="225dp"
         android:accessibilityLiveRegion="polite"
         android:accessibilityTraversalAfter="@id/options_btn"

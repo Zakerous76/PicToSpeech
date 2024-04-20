@@ -9,7 +9,7 @@
 
     <ToggleButton
         android:id="@+id/voice_assistant_tggl_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="225dp"
         android:accessibilityLiveRegion="polite"
         android:background="@color/button_gray"
@@ -42,7 +42,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/modify_speech_rate_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="225dp"
         android:accessibilityTraversalBefore="@id/voice_assistant_tggl_btn"
         android:background="@color/button_gray"
@@ -51,9 +51,8 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

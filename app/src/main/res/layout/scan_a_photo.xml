@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/upload_a_photo_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:accessibilityLiveRegion="polite"
         android:background="@color/button_gray"
@@ -23,7 +23,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/take_a_photo_btn"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:accessibilityTraversalAfter="@id/upload_a_photo_btn"
         android:background="@color/button_gray"
