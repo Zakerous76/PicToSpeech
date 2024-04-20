@@ -13,4 +13,6 @@
     <string name="default_speech_rate">x1.0</string>
     <string name="upload_a_photo">Upload a Photo</string>
     <string name="take_a_photo">Take a Photo</string>
+    <string name="cancel">Cancel</string>
+    <string name="processing_photo_desc">An icon showing that the photo is being processed</string>
 </resources>
