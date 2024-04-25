@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/read_aloud"
+        android:id="@+id/read_aloud_btn"
         android:layout_width="match_parent"
         android:layout_height="225dp"
         android:background="@color/button_green"
@@ -23,7 +23,7 @@
         tools:ignore="VisualLintBounds,VisualLintButtonSize" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/resultEditText"
         style="@android:style/Widget.DeviceDefault.Light.EditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -37,7 +37,7 @@
         android:singleLine="false"
         android:text="@string/sample_result_text"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/read_aloud"
+        app:layout_constraintBottom_toTopOf="@+id/read_aloud_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
