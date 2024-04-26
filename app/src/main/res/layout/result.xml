@@ -8,20 +8,6 @@
     tools:context=".MainActivity">
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/read_aloud_btn"
-        android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:background="@color/color_green"
-        android:text="@string/read_aloud"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
-
     <EditText
         android:id="@+id/resultEditText"
         style="@android:style/Widget.DeviceDefault.Light.EditText"
@@ -31,20 +17,51 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
+        android:justificationMode="inter_word"
         android:singleLine="false"
         android:text="@string/sample_result_text"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/read_aloud_btn"
+        app:layout_constraintBottom_toTopOf="@+id/copy_to_clipboard_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/copy_to_clipboard_btn"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/color_green_light"
+        android:text="@string/copy_to_clipboard"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/read_aloud_btn"
+        app:layout_constraintEnd_toEndOf="@id/read_aloud_btn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/read_aloud_btn"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/button_color1"
+        android:text="@string/read_aloud"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

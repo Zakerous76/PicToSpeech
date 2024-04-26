@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 public class ResultActivity extends AppCompatActivity {
 
     EditText resultEditText;
-    AppCompatButton readAloudBtn;
+    AppCompatButton readAloudBtn, copyToClipboardBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -19,9 +19,17 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.result);
 
         resultEditText  = findViewById(R.id.resultEditText);
+        copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
         readAloudBtn = findViewById(R.id.read_aloud_btn);
 
-        // TODO: implement read_aloud button
+        // TODO: implement copy_to_clipboard and read_aloud buttons
+        copyToClipboardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         readAloudBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
