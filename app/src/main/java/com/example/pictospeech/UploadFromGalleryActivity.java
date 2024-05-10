@@ -36,7 +36,7 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.upload_a_photo_activity);
+        setContentView(R.layout.waiting_activity);
 
         cancelBtn = findViewById(R.id.cancel_btn);
         // As soon as it enters, it should give user the ability to upload photos
