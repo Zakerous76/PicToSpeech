@@ -9,11 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,18 +38,12 @@ public class TakePhotoActivity extends AppCompatActivity {
     // TODO: Use Camera2 api to have full control over the aspect ratio and the resolution
     private String imagePath;
 
-    ImageView imgCamera;
-    Button btnCamera;
+    String resultString;
     String TAG = "TakePhotoActivity";
-    TextView resultTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.take_a_photo_activity);
-
-        imgCamera = findViewById(R.id.imageView);
-        btnCamera = findViewById(R.id.upload_photo_btn);
-        resultTextView = findViewById(R.id.waiting_text_view);
+        setContentView(R.layout.waiting_activity);
 
         // request permission for the camera
         Log.d(TAG, "onCreate: " + ContextCompat.checkSelfPermission(TakePhotoActivity.this, Manifest.permission.CAMERA));
@@ -63,13 +52,7 @@ public class TakePhotoActivity extends AppCompatActivity {
                     Manifest.permission.CAMERA
             }, CAMERA_REQ_CODE);
         } else {
-            btnCamera.setEnabled(true);
-            btnCamera.setOnClickListener((new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startCamera();
-                }
-            }));
+            startCamera();
         }
         
     }
@@ -101,21 +84,28 @@ public class TakePhotoActivity extends AppCompatActivity {
                 Bitmap originalBitmap = BitmapFactory.decodeFile(imagePath);
                 int originalWidth = originalBitmap.getWidth();
                 int originalHeight = originalBitmap.getHeight();
-                Toast.makeText(this, "" + originalWidth + " " + originalHeight, Toast.LENGTH_SHORT).show();
 
                 // Calculate the new width and height by halving the original dimensions
                 int newWidth = originalWidth / 2;
                 int newHeight = originalHeight / 2;
 
-                Toast.makeText(this, "new: " + newWidth + "x" + newHeight, Toast.LENGTH_SHORT).show();
-
                 Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
-                getTextFromImage(resizedBitmap, resultTextView);
+                getTextFromImage(resizedBitmap);
             }
         }
     }
 
-    private void getTextFromImage(Bitmap bitmap, TextView txtView) {
+
+    private void sendResultString() {
+        // Start ResultActivity and pass resultString as an extra
+        Intent intent = new Intent(TakePhotoActivity.this, ResultActivity.class);
+        intent.putExtra("resultString", resultString);
+        startActivity(intent);
+        finish(); // Finish the current activity to prevent it from staying in the back stack
+    }
+
+
+    private void getTextFromImage(Bitmap bitmap) {
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
         InputImage image = InputImage.fromBitmap(bitmap, 0);
         Task<Text> result =
@@ -124,10 +114,10 @@ public class TakePhotoActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Text visionText) {
                                 // Task completed successfully
-                                String resultText = visionText.getText();
-                                Log.d(TAG, "getTextFromImage: " + resultText);
-                                // Update the TextView with the recognized text
-                                txtView.setText(resultText);
+                                resultString = visionText.getText();
+                                Log.d(TAG, "getTextFromImage: " + resultString);
+                                sendResultString();
+
                             }
                         })
                         .addOnFailureListener(
