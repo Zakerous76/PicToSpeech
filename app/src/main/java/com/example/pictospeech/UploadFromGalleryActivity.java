@@ -64,6 +64,7 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
         Intent intent = new Intent(UploadFromGalleryActivity.this, ResultActivity.class);
         intent.putExtra("resultString", resultString);
         startActivity(intent);
+        finish(); // Finish the current activity to prevent it from staying in the back stack
     }
 
 
@@ -81,12 +82,10 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
 
                 int originalWidth = originalBitmap.getWidth();
                 int originalHeight = originalBitmap.getHeight();
-                Toast.makeText(this, "" + originalWidth + " " + originalHeight, Toast.LENGTH_SHORT).show();
 
                 // Calculate the new width and height by halving the original dimensions
                 int newWidth = originalWidth / 2;
                 int newHeight = originalHeight / 2;
-                Toast.makeText(this, "new: " + newWidth + "x" + newHeight, Toast.LENGTH_SHORT).show();
 
                 Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
                 getTextFromImage(resizedBitmap);

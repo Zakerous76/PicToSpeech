@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <EditText
+        <TextView
             android:id="@+id/waiting_text_view"
             style="@android:style/Widget.DeviceDefault.Light.EditText"
             android:layout_width="match_parent"
@@ -32,7 +32,6 @@
             android:layout_marginBottom="20dp"
             android:ems="10"
             android:importantForAutofill="no"
-            android:inputType="textMultiLine"
             android:justificationMode="inter_word"
             android:singleLine="false"
             android:text="@string/sample_result_text"
