@@ -40,6 +40,7 @@ import java.util.Locale;
 
 public class TakePhotoActivity extends AppCompatActivity {
     private final int CAMERA_REQ_CODE = 100;
+    // TODO: Use Camera2 api to have full control over the aspect ratio and the resolution
     private final int DESIRED_WIDTH = 1280;
     private final int DESIRED_HEIGHT = 960;
     private String imagePath;
