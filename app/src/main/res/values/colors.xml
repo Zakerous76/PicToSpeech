@@ -8,5 +8,8 @@
     <color name="color_red">#C92222</color>
     <color name="color_green">#267137</color>
     <color name="color_green_light">#1BBF00</color>
+    <color name="status_bar_color">#FF0000</color>
+    <color name="transparent">#00000000</color> <!-- Fully transparent color -->
+
 
 </resources>
