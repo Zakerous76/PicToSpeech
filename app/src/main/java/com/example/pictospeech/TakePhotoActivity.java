@@ -53,8 +53,8 @@ public class TakePhotoActivity extends AppCompatActivity {
         setContentView(R.layout.take_a_photo_activity);
 
         imgCamera = findViewById(R.id.imageView);
-        btnCamera = findViewById(R.id.take_photo_btn);
-        resultTextView = findViewById(R.id.resultEditText);
+        btnCamera = findViewById(R.id.upload_photo_btn);
+        resultTextView = findViewById(R.id.waiting_text_view);
 
         // request permission for the camera
         Log.d(TAG, "onCreate: " + ContextCompat.checkSelfPermission(TakePhotoActivity.this, Manifest.permission.CAMERA));

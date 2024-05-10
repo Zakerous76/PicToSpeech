@@ -19,7 +19,6 @@ package com.example.pictospeech;
 
         import com.google.android.gms.tasks.OnFailureListener;
         import com.google.android.gms.tasks.OnSuccessListener;
-        import com.google.android.gms.tasks.Task;
         import com.google.mlkit.vision.common.InputImage;
         import com.google.mlkit.vision.text.Text;
         import com.google.mlkit.vision.text.TextRecognition;
@@ -31,43 +30,42 @@ package com.example.pictospeech;
 
 public class UploadFromGalleryActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private ImageView imageView;
 
-
+    String resultString;
     private final int CAMERA_REQ_CODE = 100;
-    ImageView imgCamera, preprocessedImg;
-    Button btnCamera;
+    Button cancelBtn;
     String TAG = "UploadFromGalleryActivity";
-    String resultText;
-    TextView resultTextView, resultTextView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gallery_activity);
+        setContentView(R.layout.upload_a_photo_activity);
 
-        imageView = findViewById(R.id.imageView);
-        btnCamera = findViewById(R.id.take_photo_btn);
-        btnCamera.setOnClickListener(new View.OnClickListener() {
+        cancelBtn = findViewById(R.id.cancel_btn);
+        // As soon as it enters, it should give user the ability to upload photos
+        openGallery();
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGallery();
+                Intent goBack = new Intent(UploadFromGalleryActivity.this, ScanPhotoActivity.class);
+                startActivity(goBack);
             }
         });
-
-        preprocessedImg = findViewById(R.id.imageView2);
-        resultTextView = findViewById(R.id.resultEditText);
-        resultTextView2 = findViewById(R.id.resultEditText2);
-
-
 
 
     }
 
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
+    private void sendResultString() {
+        // Start ResultActivity and pass resultString as an extra
+        Intent intent = new Intent(UploadFromGalleryActivity.this, ResultActivity.class);
+        intent.putExtra("resultString", resultString);
+        startActivity(intent);
+    }
+
 
 
     @Override
@@ -80,7 +78,6 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                 // Load the selected image into an ImageView
                 InputStream inputStream = getContentResolver().openInputStream(imageUri);
                 Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
-                imageView.setImageBitmap(originalBitmap);
 
                 int originalWidth = originalBitmap.getWidth();
                 int originalHeight = originalBitmap.getHeight();
@@ -89,11 +86,10 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                 // Calculate the new width and height by halving the original dimensions
                 int newWidth = originalWidth / 2;
                 int newHeight = originalHeight / 2;
-
                 Toast.makeText(this, "new: " + newWidth + "x" + newHeight, Toast.LENGTH_SHORT).show();
 
                 Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
-                getTextFromImage(resizedBitmap, resultTextView);
+                getTextFromImage(resizedBitmap);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -104,29 +100,30 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
 
 
 
-    private void getTextFromImage(Bitmap bitmap, TextView txtView) {
+    private void getTextFromImage(Bitmap bitmap) {
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
         InputImage image = InputImage.fromBitmap(bitmap, 0);
-        Task<Text> result =
-                recognizer.process(image)
-                        .addOnSuccessListener(new OnSuccessListener<Text>() {
-                            @Override
-                            public void onSuccess(Text visionText) {
-                                // Task completed successfully
-                                String resultText = visionText.getText();
-                                Log.d(TAG, "getTextFromImage: " + resultText);
-                                // Update the TextView with the recognized text
-                                txtView.setText(resultText);
-                            }
-                        })
-                        .addOnFailureListener(
-                                new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Task failed with an exception
-                                        Log.e(TAG, "getTextFromImage: Text recognition failed", e);
-                                    }
-                                });
+        recognizer.process(image)
+                .addOnSuccessListener(new OnSuccessListener<Text>() {
+                @Override
+                public void onSuccess(Text visionText) {
+                    // Task completed successfully
+                    resultString = visionText.getText();
+                    sendResultString();
+
+                    Log.d(TAG, "getTextFromImage: " + resultString);
+                }
+                })
+                .addOnFailureListener(
+                    new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Task failed with an exception
+                            Log.e(TAG, "getTextFromImage: Text recognition failed", e);
+                        }
+                    }
+                );
     }
+
 
 }

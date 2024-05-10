@@ -11,15 +11,19 @@ public class ResultActivity extends AppCompatActivity {
 
     EditText resultEditText;
     AppCompatButton readAloudBtn, copyToClipboardBtn;
+    String resultString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_activity);
 
-        resultEditText  = findViewById(R.id.resultEditText);
+        resultString = getIntent().getStringExtra("resultString");
+        resultEditText  = findViewById(R.id.waiting_text_view);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
         readAloudBtn = findViewById(R.id.read_aloud_btn);
+
+        resultEditText.setText(resultString);
 
         // TODO: implement copy_to_clipboard and read_aloud buttons
         copyToClipboardBtn.setOnClickListener(new View.OnClickListener() {
