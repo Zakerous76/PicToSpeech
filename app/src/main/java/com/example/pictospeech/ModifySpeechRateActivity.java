@@ -20,7 +20,7 @@ public class ModifySpeechRateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.speech_rate);
+        setContentView(R.layout.speech_rate_activity);
 
         decreaseBtn = findViewById(R.id.decrease_speech_rate_btn);
         increaseBtn = findViewById(R.id.increase_speech_rate_btn);

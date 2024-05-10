@@ -3,7 +3,6 @@ package com.example.pictospeech;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -16,7 +15,7 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.result);
+        setContentView(R.layout.result_activity);
 
         resultEditText  = findViewById(R.id.resultEditText);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);

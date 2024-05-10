@@ -37,7 +37,7 @@ public class TakePhotoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.take_a_photo);
+        setContentView(R.layout.take_a_photo_activity);
 
         imgCamera = findViewById(R.id.imageView);
         preprocessedImg = findViewById(R.id.imageView2);

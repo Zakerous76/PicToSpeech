@@ -14,7 +14,7 @@ public class OptionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.options);
+        setContentView(R.layout.options_activity);
 
         voiceAssistantBtn = findViewById(R.id.voice_assistant_tggl_btn);
         modifySpeechRateBtn = findViewById(R.id.modify_speech_rate_btn);
