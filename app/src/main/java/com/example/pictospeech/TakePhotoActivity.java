@@ -10,19 +10,14 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.components.BuildConfig;
 import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
@@ -108,25 +103,17 @@ public class TakePhotoActivity extends AppCompatActivity {
     private void getTextFromImage(Bitmap bitmap) {
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
         InputImage image = InputImage.fromBitmap(bitmap, 0);
-        Task<Text> result =
-                recognizer.process(image)
-                        .addOnSuccessListener(new OnSuccessListener<Text>() {
-                            @Override
-                            public void onSuccess(Text visionText) {
-                                // Task completed successfully
-                                resultString = visionText.getText();
-                                Log.d(TAG, "getTextFromImage: " + resultString);
-                                sendResultString();
-
-                            }
+        recognizer.process(image)
+                        .addOnSuccessListener(visionText -> {
+                            // Task completed successfully
+                            resultString = visionText.getText();
+                            Log.d(TAG, "getTextFromImage: " + resultString);
+                            sendResultString();
                         })
                         .addOnFailureListener(
-                                new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Task failed with an exception
-                                        Log.e(TAG, "getTextFromImage: Text recognition failed", e);
-                                    }
+                                e -> {
+                                    // Task failed with an exception
+                                    Log.e(TAG, "getTextFromImage: Text recognition failed", e);
                                 });
     }
 
@@ -135,7 +122,7 @@ public class TakePhotoActivity extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File imageFile = null;
+        File imageFile;
         try {
             imageFile = File.createTempFile(
                     imageFileName,  /* prefix */
