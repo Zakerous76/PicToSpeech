@@ -1,8 +1,6 @@
 package com.example.pictospeech;
 
-        import android.Manifest;
         import android.content.Intent;
-        import android.content.pm.PackageManager;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
         import android.net.Uri;
@@ -18,8 +16,6 @@ package com.example.pictospeech;
         import androidx.annotation.NonNull;
         import androidx.annotation.Nullable;
         import androidx.appcompat.app.AppCompatActivity;
-        import androidx.core.app.ActivityCompat;
-        import androidx.core.content.ContextCompat;
 
         import com.google.android.gms.tasks.OnFailureListener;
         import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,17 +46,26 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
         setContentView(R.layout.gallery_activity);
 
         imageView = findViewById(R.id.imageView);
-        imageView.setOnClickListener(v -> openGallery());
+        btnCamera = findViewById(R.id.take_photo_btn);
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
 
         preprocessedImg = findViewById(R.id.imageView2);
         resultTextView = findViewById(R.id.resultEditText);
         resultTextView2 = findViewById(R.id.resultEditText2);
 
 
+
+
     }
 
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
@@ -74,12 +79,22 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
             try {
                 // Load the selected image into an ImageView
                 InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                imageView.setImageBitmap(bitmap);
+                Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
+                imageView.setImageBitmap(originalBitmap);
 
-                // Perform further processing or upload the image
-                // For example, you can compress the image before uploading
-                // Or directly upload it to a server or cloud storage
+                int originalWidth = originalBitmap.getWidth();
+                int originalHeight = originalBitmap.getHeight();
+                Toast.makeText(this, "" + originalWidth + " " + originalHeight, Toast.LENGTH_SHORT).show();
+
+                // Calculate the new width and height by halving the original dimensions
+                int newWidth = originalWidth / 2;
+                int newHeight = originalHeight / 2;
+
+                Toast.makeText(this, "new: " + newWidth + "x" + newHeight, Toast.LENGTH_SHORT).show();
+
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+                getTextFromImage(resizedBitmap, resultTextView);
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 Toast.makeText(this, "Error loading image", Toast.LENGTH_SHORT).show();
@@ -88,28 +103,6 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
     }
 
 
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        // TODO: Find a way to tell the user to hit ok twice
-//        if(resultCode==RESULT_OK){
-//            if (requestCode==CAMERA_REQ_CODE){
-//                // for camera
-//                Bitmap img = (Bitmap) (data.getExtras().get("data"));
-//                imgCamera.setImageBitmap(img);
-//
-//                // Preprocess the image
-//                // TODO: Find a way to have the recognizer ingest higher resolution image
-//                Bitmap preprocessedImage = ImagePreprocessor.preprocessImage(img);
-//                preprocessedImg.setImageBitmap(preprocessedImage);
-//
-//                // Perform text recognition on the preprocessed image
-//                getTextFromImage(img, resultTextView);
-//                getTextFromImage(preprocessedImage, resultTextView2);
-//            }
-//        }
-//    }
 
     private void getTextFromImage(Bitmap bitmap, TextView txtView) {
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);

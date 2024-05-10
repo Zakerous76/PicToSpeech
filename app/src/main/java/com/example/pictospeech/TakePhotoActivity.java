@@ -41,8 +41,6 @@ import java.util.Locale;
 public class TakePhotoActivity extends AppCompatActivity {
     private final int CAMERA_REQ_CODE = 100;
     // TODO: Use Camera2 api to have full control over the aspect ratio and the resolution
-    private final int DESIRED_WIDTH = 1280;
-    private final int DESIRED_HEIGHT = 960;
     private String imagePath;
 
     ImageView imgCamera;
@@ -101,16 +99,18 @@ public class TakePhotoActivity extends AppCompatActivity {
             if (requestCode == CAMERA_REQ_CODE) {
                 // Load the image from the file
                 Bitmap originalBitmap = BitmapFactory.decodeFile(imagePath);
-                Bitmap scaledBitmapImg = Bitmap.createScaledBitmap(originalBitmap, DESIRED_WIDTH, DESIRED_HEIGHT, true);
+                int originalWidth = originalBitmap.getWidth();
+                int originalHeight = originalBitmap.getHeight();
+                Toast.makeText(this, "" + originalWidth + " " + originalHeight, Toast.LENGTH_SHORT).show();
 
-                // Display the image
-                imgCamera.setImageBitmap(scaledBitmapImg);
-                Toast.makeText(this, " " + scaledBitmapImg.getHeight() + " " + scaledBitmapImg.getWidth(), Toast.LENGTH_SHORT).show();
+                // Calculate the new width and height by halving the original dimensions
+                int newWidth = originalWidth / 2;
+                int newHeight = originalHeight / 2;
 
-                // Preprocess the image: Decreases Accuracy
+                Toast.makeText(this, "new: " + newWidth + "x" + newHeight, Toast.LENGTH_SHORT).show();
 
-                // Perform text recognition on the preprocessed image
-                getTextFromImage(scaledBitmapImg, resultTextView);
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+                getTextFromImage(resizedBitmap, resultTextView);
             }
         }
     }
