@@ -1,5 +1,6 @@
 package com.example.pictospeech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,8 +29,11 @@ public class ScanPhotoActivity extends AppCompatActivity {
         takeAPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(ScanPhotoActivity.this, TakePhotoActivity.class);
+                startActivity(i);
             }
         });
+
+
     }
 }
