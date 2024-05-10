@@ -40,24 +40,22 @@ import java.util.Locale;
 
 public class TakePhotoActivity extends AppCompatActivity {
     private final int CAMERA_REQ_CODE = 100;
-    private final int DESIRED_WIDTH = 1024;
-    private final int DESIRED_HEIGHT = 768;
+    private final int DESIRED_WIDTH = 1280;
+    private final int DESIRED_HEIGHT = 960;
     private String imagePath;
 
-    ImageView imgCamera, preprocessedImg;
+    ImageView imgCamera;
     Button btnCamera;
     String TAG = "TakePhotoActivity";
-    TextView resultTextView, resultTextView2;
+    TextView resultTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.take_a_photo_activity);
 
         imgCamera = findViewById(R.id.imageView);
-        preprocessedImg = findViewById(R.id.imageView2);
         btnCamera = findViewById(R.id.take_photo_btn);
         resultTextView = findViewById(R.id.resultEditText);
-        resultTextView2 = findViewById(R.id.resultEditText2);
 
         // request permission for the camera
         Log.d(TAG, "onCreate: " + ContextCompat.checkSelfPermission(TakePhotoActivity.this, Manifest.permission.CAMERA));
