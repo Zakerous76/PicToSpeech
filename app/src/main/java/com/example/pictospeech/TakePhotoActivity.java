@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +54,7 @@ public class TakePhotoActivity extends AppCompatActivity {
     }
 
     private void startCamera() {
+
         Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a file to save the image
         File imageFile = createImageFile();
@@ -73,8 +75,8 @@ public class TakePhotoActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // TODO: Find a way to tell the user to hit ok twice
-        if(resultCode==RESULT_OK){
-            if (requestCode == CAMERA_REQ_CODE) {
+        if(requestCode == CAMERA_REQ_CODE){
+            if (resultCode==RESULT_OK) {
                 // Load the image from the file
                 Bitmap originalBitmap = BitmapFactory.decodeFile(imagePath);
                 int originalWidth = originalBitmap.getWidth();
@@ -86,8 +88,16 @@ public class TakePhotoActivity extends AppCompatActivity {
 
                 Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
                 getTextFromImage(resizedBitmap);
+            } else {
+                // If resultCode is not OK, handle the failure or inform the user accordingly
+                Toast.makeText(this, "Failed to capture image", Toast.LENGTH_SHORT).show();
+                finish(); // Finish the activity or take appropriate action
             }
+        } else {
+            Toast.makeText(this, "Something wrong: requestCode=="+requestCode, Toast.LENGTH_SHORT).show();
+            finish();
         }
+
     }
 
 
