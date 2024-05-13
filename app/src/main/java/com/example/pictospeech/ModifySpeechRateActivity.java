@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 public class ModifySpeechRateActivity extends AppCompatActivity {
-
+// TODO: Add different options to change the pitch and etc.
     AppCompatButton decreaseBtn, increaseBtn;
     TextView speechRateTxtV;
     SharedPreferences prefs;

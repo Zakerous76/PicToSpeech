@@ -3,8 +3,9 @@ package com.example.pictospeech;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,11 @@ public class ResultActivity extends AppCompatActivity {
     String resultString;
     TextToSpeech textToSpeech;
     String TAG = "ResultActivity";
+    SharedPreferences prefs;
+    float speechRate = 1.0F;
+    private static final String RATE_KEY = "rate";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,10 +41,14 @@ public class ResultActivity extends AppCompatActivity {
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
         readAloudBtn = findViewById(R.id.read_aloud_btn);
         resultTextView.setText(resultString);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        speechRate = prefs.getFloat(RATE_KEY, speechRate);
+        Log.e(TAG, "onCreate: speechRate => " + speechRate);
 
-        Configuration config = getResources().getConfiguration();
-        config.setLocale(new Locale("tr", "TR"));
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+// For configuring the locale of the applcation. Might be useful when adding different language support
+//        Configuration config = getResources().getConfiguration();
+//        config.setLocale(new Locale("tr", "TR"));
+//        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
         // Specify the package name for Google's TTS engine
         String googleTTSEnginePackageName = "com.google.android.tts";
@@ -54,11 +64,12 @@ public class ResultActivity extends AppCompatActivity {
                         Log.e(TAG, "Turkish language is not supported");
                     } else {
                         // TTS initialization successful, proceed with using TTS
+                        textToSpeech.setSpeechRate(speechRate);
+
                     }
                 } else {
                     // TTS initialization failed
                     Log.e(TAG, "TextToSpeech initialization failed");
-                    // Handle the error accordingly
                 }
             }
         }, googleTTSEnginePackageName);
