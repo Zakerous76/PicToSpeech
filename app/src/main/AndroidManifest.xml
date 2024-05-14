@@ -18,6 +18,8 @@
         </intent>
     </queries>
 
+
+
     <application
         android:localeConfig="@xml/locales_config"
         android:allowBackup="true"
@@ -29,6 +31,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31" >
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+
+        <meta-data
+            android:name="com.google.firebase.components.provider"
+            android:resource="@xml/file_paths" />
+
+        <!-- AppLocalesMetadataHolderService for in-app locales -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
 
         <activity
             android:name=".UploadFromGalleryActivity"

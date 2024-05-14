@@ -3,11 +3,9 @@
     <string name="subtitle">Reader companion for the visually impaired</string>
     <string name="scan_a_pic">Scan a Picture</string>
     <string name="settings">Options</string>
-    <string name="voice_assistant">Voice Assistant</string>
-    <string name="voice_assistant_on">Voice Assistant (ON)</string>
-    <string name="voice_assistant_off">Voice Assistant (OFF)</string>
+    <string name="change_language">Change Language</string>
     <string name="modify_speech_rate">Modify Speech Rate</string>
-    <string name="voice_assistant_description">Voice Assistant on/off toggle button</string>
+    <string name="change_language_description">You can change the language of the app and the speech.</string>
     <string name="decrease">Decrease</string>
     <string name="increase">Increase</string>
     <string name="default_speech_rate">x1.0</string>
@@ -20,4 +18,8 @@
     <string name="copy_to_clipboard">Copy to Clipboard</string>
     <string name="title_activity_image_picker">ImagePickerActivity</string>
     <string name="processing">Processing…</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Turkish</item>
+    </string-array>
 </resources>

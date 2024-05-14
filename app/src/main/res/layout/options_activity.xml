@@ -7,19 +7,21 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <ToggleButton
-        android:id="@+id/voice_assistant_tggl_btn"
+    <Spinner
+        android:id="@+id/language_spinner"
         android:layout_width="match_parent"
         android:layout_height="225dp"
         android:accessibilityLiveRegion="polite"
         android:background="@color/button_color1"
         android:checked="true"
-        android:contentDescription="@string/voice_assistant_description"
-        android:text="@string/voice_assistant"
+        android:contentDescription="@string/change_language_description"
+        android:text="@string/change_language"
         android:textColor="@color/white"
-        android:textOff="@string/voice_assistant_off"
-        android:textOn="@string/voice_assistant_on"
+
         android:textSize="34sp"
+        android:gravity="center"
+        android:textAlignment="center"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +46,7 @@
         android:id="@+id/modify_speech_rate_btn"
         android:layout_width="match_parent"
         android:layout_height="225dp"
-        android:accessibilityTraversalBefore="@id/voice_assistant_tggl_btn"
+        android:accessibilityTraversalBefore="@id/language_spinner"
         android:background="@color/button_color1"
         android:text="@string/modify_speech_rate"
         android:textColor="@color/white"

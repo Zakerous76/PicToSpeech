@@ -3,11 +3,9 @@
     <string name="subtitle">Görme engelliler için okuyucu arkadaşı</string>
     <string name="scan_a_pic">Resim Tara</string>
     <string name="settings">Ayarlar</string>
-    <string name="voice_assistant">Sesli Asistan</string>
-    <string name="voice_assistant_on">Sesli Asistan (Açık)</string>
-    <string name="voice_assistant_off">Sesli Asistan (Kapali)</string>
+    <string name="change_language">Dil Değiştir</string>
     <string name="modify_speech_rate">Seslendirme Hızını Değiştir</string>
-    <string name="voice_assistant_description">Sesli Asistanı açıp kapatabilirsiniz</string>
+    <string name="change_language_description">Buradan uygulama ve seslendirme dilini değiştirebilirsiniz</string>
     <string name="decrease">Azalt</string>
     <string name="increase">Arttır</string>
     <string name="default_speech_rate">x1.0</string>
@@ -20,4 +18,8 @@
     <string name="copy_to_clipboard">Panoya Kopyala</string>
     <string name="title_activity_image_picker">ImagePickerActivity</string>
     <string name="processing">İşleniyor…</string>
+    <string-array name="languages">
+        <item>İnglizce</item>
+        <item>Türkçe</item>
+    </string-array>
 </resources>

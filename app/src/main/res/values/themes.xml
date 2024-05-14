@@ -9,4 +9,5 @@
         <!-- Customize your theme here -->
         <item name="android:statusBarColor">@color/transparent</item>
     </style>
+
 </resources>
