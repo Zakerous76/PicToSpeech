@@ -19,7 +19,7 @@ public class ModifySpeechRateActivity extends AppCompatActivity {
     float rate = 1.0F;
     float rateLowerLimit = .5F;
     float rateUpperLimit = 4.0F;
-    float rateStep = .5F;
+    float rateStep = .25F;
 
     // Key for rate in SharedPreferences
     private static final String RATE_KEY = "rate";

@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OptionsActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ModifySpeechRateActivity"

@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:padding="5dp"
             app:srcCompat="@mipmap/processing_img_darkmode_foreground"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,6 @@
             app:layout_constraintTop_toTopOf="parent"
 
             />
-
     </LinearLayout>
 
 
@@ -47,12 +46,13 @@
         >
 
         <TextView
-            android:id="@+id/waiting_text_view"
+            android:id="@+id/waiting_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="@string/processing"
             android:textColor="@color/white"
+            android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -65,15 +65,14 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancel_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:background="@color/color_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:height="200dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textColor="@color/white"
-        android:textSize="34sp"/>
+        android:textSize="@dimen/button_text_size"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

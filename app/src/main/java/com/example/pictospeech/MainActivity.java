@@ -9,14 +9,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the status bar color
 
         setContentView(R.layout.main_activity);
-        optionsBtn = findViewById(R.id.options_btn);
+        optionsBtn = findViewById(R.id.settings_btn);
         scanPicBtn = findViewById(R.id.scan_a_pic_btn);
 
         // Check if the app has permission to access the camera
@@ -72,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         optionsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, OptionsActivity.class);
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(i);
             }
         });

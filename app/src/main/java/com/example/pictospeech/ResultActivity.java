@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -17,18 +17,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import java.util.Locale;
+import java.util.Map;
 
 public class ResultActivity extends AppCompatActivity {
 
-    TextView resultTextView;
+    private static final String RATE_KEY = "rate";
+    private static final String SPEECH_LANG_KEY = "speech_lang_locale";
+
+    EditText resultEditTextView;
     AppCompatButton readAloudBtn, copyToClipboardBtn;
     String resultString;
     TextToSpeech textToSpeech;
     String TAG = "ResultActivity";
     SharedPreferences prefs;
+    String speechLanguage_value = "en";
     float speechRate = 1.0F;
-    private static final String RATE_KEY = "rate";
-
+    Map<String, String> speechLanguageCountryMap = Map.of("en", "US", "tr", "TR");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +41,15 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.result_activity);
 
         resultString = getIntent().getStringExtra("resultString");
-        resultTextView = findViewById(R.id.waiting_text_view);
+        resultEditTextView = findViewById(R.id.waiting_edit_text);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
         readAloudBtn = findViewById(R.id.read_aloud_btn);
-        resultTextView.setText(resultString);
+        resultEditTextView.setText(resultString);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        speechRate = prefs.getFloat(RATE_KEY, speechRate);
-        Log.e(TAG, "onCreate: speechRate => " + speechRate);
 
-// For configuring the locale of the applcation. Might be useful when adding different language support
-//        Configuration config = getResources().getConfiguration();
-//        config.setLocale(new Locale("tr", "TR"));
-//        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+        // Restore speechLanguageLocale_value and speech rate from SharedPreferences
+        speechRate = prefs.getFloat(RATE_KEY, speechRate);
+        speechLanguage_value = prefs.getString(SPEECH_LANG_KEY, speechLanguage_value);
 
         // Specify the package name for Google's TTS engine
         String googleTTSEnginePackageName = "com.google.android.tts";
@@ -58,10 +59,10 @@ public class ResultActivity extends AppCompatActivity {
                 if (status == TextToSpeech.SUCCESS) {
 
                     // Set language to Turkish
-                    int result = textToSpeech.setLanguage(new Locale("tr", "TR"));
+                    int result = textToSpeech.setLanguage(new Locale(speechLanguage_value, speechLanguageCountryMap.get(speechLanguage_value)));
                     if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         // Language data is missing or not supported
-                        Log.e(TAG, "Turkish language is not supported");
+                        Log.e(TAG,  speechLanguage_value + " language is not supported");
                     } else {
                         // TTS initialization successful, proceed with using TTS
                         textToSpeech.setSpeechRate(speechRate);
@@ -97,7 +98,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(resultString.isEmpty()){
-                    resultTextView.setError("No text recognized");
+                    resultEditTextView.setError("No text recognized");
                 } else {
                     textToSpeech.speak(resultString, TextToSpeech.QUEUE_FLUSH, null, null);
                 }

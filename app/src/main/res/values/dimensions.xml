@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_body">16sp</dimen>
+    <dimen name="text_size_sub">12sp</dimen>
+    <dimen name="text_size_title">48sp</dimen>
+    <dimen name="button_text_size">34sp</dimen>
+    <dimen name="button_height">225dp</dimen>
+    <dimen name="spinner_height">100dp</dimen>
+    <dimen name="spinner_item_text_size">28sp</dimen>
+
+</resources>
