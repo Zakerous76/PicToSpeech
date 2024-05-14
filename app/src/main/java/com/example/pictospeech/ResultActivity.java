@@ -53,25 +53,23 @@ public class ResultActivity extends AppCompatActivity {
 
         // Specify the package name for Google's TTS engine
         String googleTTSEnginePackageName = "com.google.android.tts";
-        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
+        textToSpeech = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
 
-                    // Set language to Turkish
-                    int result = textToSpeech.setLanguage(new Locale(speechLanguage_value, speechLanguageCountryMap.get(speechLanguage_value)));
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        // Language data is missing or not supported
-                        Log.e(TAG,  speechLanguage_value + " language is not supported");
-                    } else {
-                        // TTS initialization successful, proceed with using TTS
-                        textToSpeech.setSpeechRate(speechRate);
-
-                    }
+                // Set language to Turkish
+                int result = textToSpeech.setLanguage(new Locale(speechLanguage_value, speechLanguageCountryMap.get(speechLanguage_value)));
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    // Language data is missing or not supported
+                    Log.e(TAG,  speechLanguage_value + " language is not supported");
                 } else {
-                    // TTS initialization failed
-                    Log.e(TAG, "TextToSpeech initialization failed");
+                    // TTS initialization successful, proceed with using TTS
+                    Log.d(TAG, "Current Speech Language: " + textToSpeech.getLanguage());
+                    // Set speech rate
+                    textToSpeech.setSpeechRate(speechRate);
                 }
+            } else {
+                // TTS initialization failed
+                Log.e(TAG, "TextToSpeech initialization failed");
             }
         }, googleTTSEnginePackageName);
 
