@@ -28,7 +28,7 @@
         android:id="@+id/options_title_txtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/options"
+        android:text="@string/settings"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="50sp"

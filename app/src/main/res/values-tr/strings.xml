@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PicToSpeech</string>
+    <string name="subtitle">Görme engelliler için okuyucu arkadaşı</string>
+    <string name="scan_a_pic">Resim Tara</string>
+    <string name="settings">Ayarlar</string>
+    <string name="voice_assistant">Sesli Asistan</string>
+    <string name="voice_assistant_on">Sesli Asistan (Açık)</string>
+    <string name="voice_assistant_off">Sesli Asistan (Kapali)</string>
+    <string name="modify_speech_rate">Seslendirme Hızını Değiştir</string>
+    <string name="voice_assistant_description">Sesli Asistanı açıp kapatabilirsiniz</string>
+    <string name="decrease">Azalt</string>
+    <string name="increase">Arttır</string>
+    <string name="default_speech_rate">x1.0</string>
+    <string name="upload_a_photo">Resim Yükle</string>
+    <string name="take_a_photo">Resim Çek</string>
+    <string name="cancel">İptal</string>
+    <string name="processing_photo_desc">Resmin işlendiğini gösteren bir simge</string>
+    <string name="read_aloud">Seslendir</string>
+    <string name="sample_result_text">Brulle Cheese Cake Brulle cheese cake is one of the most famous cake in the world. You can make it in your kitchen with the recipe below. Ingredients: 2 cups of awesome ½ tsp of fun 3 tbsp color 1 cup of kindness salt and pepper to taste Procedure: Mix awesome and fun together. Add a dash of color. Flavor everything with kindness! Notes: Enjoyed best when shared.Brulle Cheese Cake Brulle cheese cake is one of the most famous cake in the world. You can make it in your kitchen with the recipe below. Ingredients: 2 cups of awesome ½ tsp of fun 3 tbsp color 1 cup of kindness salt and pepper to taste Procedure: Mix awesome and fun together. Add a dash of color. Flavor everything with kindness! Notes: Enjoyed best when shared.</string>
+    <string name="copy_to_clipboard">Panoya Kopyala</string>
+    <string name="title_activity_image_picker">ImagePickerActivity</string>
+    <string name="processing">İşleniyor…</string>
+</resources>

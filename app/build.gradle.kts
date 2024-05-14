@@ -6,6 +6,7 @@ android {
     namespace = "com.example.pictospeech"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.pictospeech"
         minSdk = 27
@@ -14,6 +15,7 @@ android {
         versionName = "1.0"
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations += listOf("en", "tr")
     }
 
     buildTypes {
