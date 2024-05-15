@@ -36,7 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.48"
+        tools:text="Pic to speech" />
 
     <TextView
         android:id="@+id/subtitle_txtV"
@@ -60,7 +61,7 @@
         android:accessibilityTraversalAfter="@id/settings_btn"
         android:background="@color/button_color1"
         android:contentDescription="@string/scan_a_photo_content_description"
-        android:text="@string/scan_a_pic"
+        android:text="@string/scan_a_photo"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"

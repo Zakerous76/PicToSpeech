@@ -16,7 +16,7 @@ public class ScanPhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_a_photo_activity);
 
-        uploadAPhoto = findViewById(R.id.upload_a_photo_btn);
+        uploadAPhoto = findViewById(R.id.select_from_gallery_btn);
         takeAPhoto = findViewById(R.id.take_a_photo_btn);
 
         // TODO: implement upload/take a photo buttons

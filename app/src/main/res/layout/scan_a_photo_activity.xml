@@ -8,25 +8,47 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/upload_a_photo_btn"
+        android:id="@+id/select_from_gallery_btn"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/button_height"
+        android:padding="10dp"
         android:accessibilityLiveRegion="polite"
         android:background="@color/button_color1"
-        android:text="@string/upload_a_photo"
+        android:text="@string/select_from_gallery"
+        android:contentDescription="@string/select_from_gallery_content_description"
         android:textColor="@color/white"
-        android:textSize="34sp"
+        android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:accessibilityTraversalAfter="@id/scan_a_photo_tv"/>
 
+    <TextView
+        android:id="@+id/scan_a_photo_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:text="@string/scan_a_photo"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/take_a_photo_btn"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:accessibilityTraversalAfter="@id/upload_a_photo_btn"
+        android:layout_height="@dimen/button_height"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/select_from_gallery_btn"
         android:background="@color/button_color1"
+        android:contentDescription="@string/take_a_photo_content_description"
         android:text="@string/take_a_photo"
         android:textColor="@color/white"
         android:textSize="34sp"
@@ -34,7 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -41,7 +40,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.result_activity);
 
         resultString = getIntent().getStringExtra("resultString");
-        resultEditTextView = findViewById(R.id.waiting_edit_text);
+        resultEditTextView = findViewById(R.id.result_edit_text);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
         readAloudBtn = findViewById(R.id.read_aloud_btn);
         resultEditTextView.setText(resultString);
@@ -73,33 +72,26 @@ public class ResultActivity extends AppCompatActivity {
             }
         }, googleTTSEnginePackageName);
 
-        // TODO: implement read_aloud buttons
-        copyToClipboardBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the clipboard manager
-                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        copyToClipboardBtn.setOnClickListener(v -> {
+            // Get the clipboard manager
+            ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
-                // Create a ClipData object to store the text
-                ClipData clipData = ClipData.newPlainText("label", resultString);
+            // Create a ClipData object to store the text
+            ClipData clipData = ClipData.newPlainText("label", resultString);
 
-                // Set the ClipData object to the clipboard
-                clipboardManager.setPrimaryClip(clipData);
+            // Set the ClipData object to the clipboard
+            clipboardManager.setPrimaryClip(clipData);
 
-                // Show a toast message indicating that the text has been copied
-                Toast.makeText(getApplicationContext(), "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+            // Show a toast message indicating that the text has been copied
+            Toast.makeText(getApplicationContext(), "Text copied to clipboard", Toast.LENGTH_SHORT).show();
 
-            }
         });
 
-        readAloudBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(resultString.isEmpty()){
-                    resultEditTextView.setError("No text recognized");
-                } else {
-                    textToSpeech.speak(resultString, TextToSpeech.QUEUE_FLUSH, null, null);
-                }
+        readAloudBtn.setOnClickListener(v -> {
+            if(resultString.isEmpty()){
+                resultEditTextView.setError("No text recognized");
+            } else {
+                textToSpeech.speak(resultString, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
 

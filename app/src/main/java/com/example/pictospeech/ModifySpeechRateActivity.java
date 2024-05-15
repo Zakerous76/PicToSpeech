@@ -40,27 +40,21 @@ public class ModifySpeechRateActivity extends AppCompatActivity {
         // Update UI with the restored rate
         speechRateTxtV.setText(String.format("x%s", rate));
 
-        decreaseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (rate > rateLowerLimit) {
-                    rate -= rateStep;
-                    speechRateTxtV.setText(String.format("x%s", rate));
-                    Log.d("ModifySpeechRateActivity", String.format("Rate: %s", rate));
-                    saveRateToSharedPreferences(); // Save the updated rate
-                }
+        decreaseBtn.setOnClickListener(v -> {
+            if (rate > rateLowerLimit) {
+                rate -= rateStep;
+                speechRateTxtV.setText(String.format("x%s", rate));
+                Log.d("ModifySpeechRateActivity", String.format("Rate: %s", rate));
+                saveRateToSharedPreferences(); // Save the updated rate
             }
         });
 
-        increaseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (rate < rateUpperLimit) {
-                    rate += rateStep;
-                    speechRateTxtV.setText(String.format("x%s", rate));
-                    Log.d("ModifySpeechRateActivity", String.format("Rate: %s", rate));
-                    saveRateToSharedPreferences(); // Save the updated rate
-                }
+        increaseBtn.setOnClickListener(v -> {
+            if (rate < rateUpperLimit) {
+                rate += rateStep;
+                speechRateTxtV.setText(String.format("x%s", rate));
+                Log.d("ModifySpeechRateActivity", String.format("Rate: %s", rate));
+                saveRateToSharedPreferences(); // Save the updated rate
             }
         });
 

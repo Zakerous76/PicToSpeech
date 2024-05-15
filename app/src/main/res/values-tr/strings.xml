@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PicToSpeech</string>
     <string name="subtitle">Görme engelliler için okuyucu arkadaşı</string>
-    <string name="scan_a_pic">Resim Tara</string>
+    <string name="scan_a_photo">Resim Tara</string>
     <string name="settings">Ayarlar</string>
     <string name="change_language">Dil Değiştir</string>
     <string name="modify_speech_rate">Seslendirme Hızını Değiştir</string>
@@ -9,7 +9,7 @@
     <string name="decrease">Azalt</string>
     <string name="increase">Arttır</string>
     <string name="default_speech_rate">x1.0</string>
-    <string name="upload_a_photo">Resim Yükle</string>
+    <string name="select_from_gallery">Resim Yükle</string>
     <string name="take_a_photo">Resim Çek</string>
     <string name="cancel">İptal</string>
     <string name="processing_photo_desc">Resmin işlendiğini gösteren bir simge</string>
@@ -18,6 +18,10 @@
     <string name="copy_to_clipboard">Panoya Kopyala</string>
     <string name="title_activity_image_picker">ImagePickerActivity</string>
     <string name="processing">İşleniyor…</string>
+    <string name="processing_image_description">An icon indicating that the image is being processed.</string>
+    <string name="select_from_gallery_content_description">Extract text from a photo in the gallery</string>
+    <string name="take_a_photo_content_description">Extract text from the photo you are about to capture</string>
+    <string name="result_edit_text_content_description">Text from the photo</string>
     <string-array name="languages">
         <item>İnglizce</item>
         <item>Türkçe</item>

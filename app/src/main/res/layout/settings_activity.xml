@@ -8,21 +8,24 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/label_for_app_language_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="App Language"
+        android:text="@string/app_language"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/app_language_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         android:textStyle="italic"/>
+
     <Spinner
         android:id="@+id/app_language_spinner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spinner_height"
         android:layout_marginTop="24dp"
         android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/label_for_app_language_spinner"
         android:background="@color/color_gray"
         android:contentDescription="@string/change_app_language_description"
         android:gravity="center"
@@ -37,21 +40,27 @@
 
 
     <TextView
+        android:id="@+id/label_for_speech_language_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Speech Language"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/app_language_spinner"
+        android:text="@string/speech_language"
         android:textColor="@color/white"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/speech_language_spinner"
+        app:layout_constraintEafnd_toEndOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textStyle="italic"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Spinner
         android:id="@+id/speech_language_spinner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spinner_height"
         android:layout_marginTop="25dp"
         android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/label_for_speech_language_spinner"
         android:background="@color/color_green"
         android:contentDescription="@string/change_speech_language_description"
         android:gravity="center"
@@ -68,6 +77,8 @@
         android:id="@+id/options_title_txtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalBefore="@id/label_for_app_language_spinner"
         android:text="@string/settings"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -84,8 +95,11 @@
         android:id="@+id/modify_speech_rate_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/speech_language_spinner"
         android:accessibilityTraversalBefore="@id/app_language_spinner"
         android:background="@color/button_color1"
+        android:contentDescription="@string/modify_speech_rate_content_description"
         android:text="@string/modify_speech_rate"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"

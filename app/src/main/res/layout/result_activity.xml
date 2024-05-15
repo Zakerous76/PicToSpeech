@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/waiting_edit_text"
+            android:id="@+id/result_edit_text"
             style="@android:style/Widget.DeviceDefault.Light.EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -40,7 +40,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="LabelFor" />
+            android:contentDescription="@string/result_edit_text_content_description"
+            android:accessibilityLiveRegion="polite"
+
+            />
 
     </ScrollView>
 
@@ -57,7 +60,10 @@
         app:layout_constraintEnd_toEndOf="@id/read_aloud_btn"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
+        tools:ignore="VisualLintBounds,VisualLintButtonSize"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/result_edit_text"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/read_aloud_btn"
@@ -71,6 +77,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/copy_to_clipboard_btn"
         />
 
 
