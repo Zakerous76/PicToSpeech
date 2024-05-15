@@ -22,6 +22,9 @@
     <string name="processing">Processing…</string>
     <string name="scan_a_photo_content_description">Scan a picture: Use this to read texts on a picture.</string>
     <string name="processing_image_description">An icon indicating that the image is being processed.</string>
+    <string name="app_language">App Language</string>
+    <string name="speech_language">Speech Language</string>
+    <string name="modify_speech_rate_content_description">Change the speech rate</string>
     <string name="select_from_gallery_content_description">Extract text from a photo in the gallery</string>
     <string name="take_a_photo_content_description">Extract text from the photo you are about to capture</string>
     <string name="result_edit_text_content_description">Text from the photo</string>

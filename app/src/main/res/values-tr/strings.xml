@@ -3,9 +3,11 @@
     <string name="subtitle">Görme engelliler için okuyucu arkadaşı</string>
     <string name="scan_a_photo">Resim Tara</string>
     <string name="settings">Ayarlar</string>
+    <string name="settings_content_description">Uygulama arayüzü ve seslendirme dilini değiştirmek için</string>
     <string name="change_language">Dil Değiştir</string>
     <string name="modify_speech_rate">Seslendirme Hızını Değiştir</string>
-    <string name="change_language_description">Buradan uygulama ve seslendirme dilini değiştirebilirsiniz</string>
+    <string name="change_app_language_description">Uygulamanın arayüzü dilini değiştir</string>
+    <string name="change_speech_language_description">Seslendirme dilini değiştir</string>
     <string name="decrease">Azalt</string>
     <string name="increase">Arttır</string>
     <string name="default_speech_rate">x1.0</string>
@@ -18,7 +20,11 @@
     <string name="copy_to_clipboard">Panoya Kopyala</string>
     <string name="title_activity_image_picker">ImagePickerActivity</string>
     <string name="processing">İşleniyor…</string>
+    <string name="scan_a_photo_content_description">Resim Tara: Resimde olan yazıları okutmak için bu tuşu kullanın</string>
     <string name="processing_image_description">An icon indicating that the image is being processed.</string>
+    <string name="app_language">Uygulama Dili</string>
+    <string name="speech_language">Seslendirme Dili</string>
+    <string name="modify_speech_rate_content_description">Seslendirme hızını değiştir</string>
     <string name="select_from_gallery_content_description">Extract text from a photo in the gallery</string>
     <string name="take_a_photo_content_description">Extract text from the photo you are about to capture</string>
     <string name="result_edit_text_content_description">Text from the photo</string>
