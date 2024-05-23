@@ -29,7 +29,7 @@ package com.example.pictospeech;
 public class UploadFromGalleryActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    String resultString;
+    String resultString = "";
     private final int CAMERA_REQ_CODE = 100;
     Button cancelBtn;
     String TAG = "UploadFromGalleryActivity";
@@ -105,9 +105,11 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Text visionText) {
                     // Task completed successfully
-                    resultString = visionText.getText();
+                    for (Text.TextBlock block : visionText.getTextBlocks()) {
+                        String blockText = cleanText(block.getText());
+                        resultString += blockText + "\n";
+                    }
                     sendResultString();
-
                     Log.d(TAG, "getTextFromImage: " + resultString);
                 }
                 })
@@ -121,6 +123,45 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                     }
                 );
     }
+    // TODO: implement this if needed
+    public String cleanText(String text){
+        // Replace multiple spaces with a single space
+        text = text.replaceAll("\\s+", " ");
+        text = text.trim();
+//        return toSentenceCase(text);
+        return toWordSentenceCase(text);
+    }
+    public String toSentenceCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        // Convert the entire string to lowercase first
+        String lowerCased = input.toLowerCase();
+        // Capitalize the first letter
+        return lowerCased.substring(0, 1).toUpperCase() + lowerCased.substring(1);
+    }
 
+    public String toWordSentenceCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+
+        StringBuilder result = new StringBuilder(input.length());
+        boolean capitalizeNext = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                capitalizeNext = true;
+                result.append(c);
+            } else if (capitalizeNext) {
+                result.append(Character.toUpperCase(c));
+                capitalizeNext = false;
+            } else {
+                result.append(Character.toLowerCase(c));
+            }
+        }
+
+        return result.toString();
+    }
 
 }
