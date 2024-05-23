@@ -8,6 +8,7 @@ package com.example.pictospeech;
         import android.provider.MediaStore;
         import android.util.Log;
         import android.view.View;
+        import android.view.textservice.SpellCheckerInfo;
         import android.widget.Button;
         import android.widget.Toast;
 
@@ -107,7 +108,7 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                     // Task completed successfully
                     for (Text.TextBlock block : visionText.getTextBlocks()) {
                         String blockText = cleanText(block.getText());
-                        resultString += blockText + "\n";
+                        resultString += blockText + ".\n\n";
                     }
                     sendResultString();
                     Log.d(TAG, "getTextFromImage: " + resultString);
@@ -162,6 +163,7 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
         }
 
         return result.toString();
+
     }
 
 }
