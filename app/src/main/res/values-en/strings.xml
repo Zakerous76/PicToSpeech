@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">PicToSpeech</string>
     <string name="subtitle">Reader companion for the visually impaired</string>
-    <string name="scan_a_photo">Scan a Picture</string>
-    <string name="settings">Settings</string>
+    <string name="scan_a_photo">Scan a Picture Page</string>
+    <string name="settings">Settings Page</string>
     <string name="settings_content_description">To change the language of the app and/or the speech rate</string>
     <string name="change_language">Change Language</string>
     <string name="modify_speech_rate">Modify Speech Rate</string>
@@ -32,4 +32,8 @@
         <item>English</item>
         <item>Turkish</item>
     </string-array>
+    <string name="result_text_view">Result Text View</string>
+    <string name="enhance">Enhance</string>
+    <string name="summarize">Summarize</string>
+    <string name="explain">Explain</string>
 </resources>

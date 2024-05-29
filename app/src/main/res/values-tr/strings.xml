@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">PicToSpeech</string>
     <string name="subtitle">Görme engelliler için okuyucu arkadaşı</string>
-    <string name="scan_a_photo">Resim Tara</string>
-    <string name="settings">Ayarlar</string>
+    <string name="scan_a_photo">Resim Tara Sayfası</string>
+    <string name="settings">Ayarlar Sayfası</string>
     <string name="settings_content_description">Uygulama arayüzü ve seslendirme dilini değiştirmek için</string>
     <string name="change_language">Dil Değiştir</string>
     <string name="modify_speech_rate">Seslendirme Hızını Değiştir</string>
@@ -32,4 +32,8 @@
         <item>İnglizce</item>
         <item>Türkçe</item>
     </string-array>
+    <string name="result_text_view">Sonuç Text View</string>
+    <string name="enhance">Geliştir</string>
+    <string name="summarize">Özetle</string>
+    <string name="explain">Açıkla</string>
 </resources>

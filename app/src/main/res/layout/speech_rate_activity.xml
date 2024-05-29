@@ -49,6 +49,7 @@
         android:accessibilityLiveRegion="polite"
         android:text="@string/modify_speech_rate"
         android:textAlignment="center"
+        android:paddingHorizontal="20dp"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
