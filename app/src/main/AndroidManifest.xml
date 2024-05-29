@@ -67,6 +67,10 @@
             android:name=".TakePhotoActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".MoreAIActivity"
+            android:exported="false" />
+
         <!-- FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"
