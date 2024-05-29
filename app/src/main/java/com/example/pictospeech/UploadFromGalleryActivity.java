@@ -58,13 +58,6 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-    private void sendResultString() {
-        // Start ResultActivity and pass resultString as an extra
-        Intent intent = new Intent(UploadFromGalleryActivity.this, ResultActivity.class);
-        intent.putExtra("resultString", resultString);
-        startActivity(intent);
-        finish(); // Finish the current activity to prevent it from staying in the back stack
-    }
 
 
 
@@ -108,7 +101,7 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                     // Task completed successfully
                     for (Text.TextBlock block : visionText.getTextBlocks()) {
                         String blockText = cleanText(block.getText());
-                        resultString += blockText + ".\n\n";
+                        resultString += blockText + "\n";
                     }
                     sendResultString();
                     Log.d(TAG, "getTextFromImage: " + resultString);
@@ -124,6 +117,16 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                     }
                 );
     }
+
+    private void sendResultString() {
+        // Start ResultActivity and pass resultString as an extra
+        Intent intent = new Intent(UploadFromGalleryActivity.this, ResultActivity.class);
+        intent.putExtra("resultString", resultString);
+        startActivity(intent);
+        finish(); // Finish the current activity to prevent it from staying in the back stack
+    }
+
+
     // TODO: implement this if needed
     public String cleanText(String text){
         // Replace multiple spaces with a single space
