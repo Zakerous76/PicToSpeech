@@ -63,7 +63,7 @@ public class MoreAIActivity extends AppCompatActivity {
         setContentView(R.layout.more_ai_activity);
 
         resultString = getIntent().getStringExtra("resultString");
-        speechString = resultString
+        speechString = resultString;
 
         geminiResponseTextView = findViewById(R.id.result_text_view);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);

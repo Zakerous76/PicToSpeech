@@ -79,6 +79,8 @@
         android:accessibilityLiveRegion="polite"
         android:accessibilityTraversalBefore="@id/label_for_app_language_spinner"
         android:text="@string/settings"
+        android:paddingHorizontal="20dp"
+
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_title"
