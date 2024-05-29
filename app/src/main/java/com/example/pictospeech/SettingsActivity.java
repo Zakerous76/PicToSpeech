@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -17,8 +18,10 @@ import androidx.core.os.LocaleListCompat;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String SPEECH_LANG_KEY = "speech_lang_locale";
+    private static final String APP_LANG_KEY = "app_lang_locale";
 
-    String speechLanguage_value = "en";
+    String speechLanguage_locale_value = "en";
+    String appLanguage_locale_value = "en";
     AppCompatButton modifySpeechRateBtn;
     Spinner appLanguageSpinner, speechLanguageSpinner;
     SharedPreferences prefs;
@@ -35,28 +38,32 @@ public class SettingsActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Restore speechLanguageLocale_value from SharedPreferences
-        speechLanguage_value = prefs.getString(SPEECH_LANG_KEY, speechLanguage_value);
+        speechLanguage_locale_value = prefs.getString(SPEECH_LANG_KEY, speechLanguage_locale_value);
+        appLanguage_locale_value = prefs.getString(APP_LANG_KEY, appLanguage_locale_value);
 
         // Create an adapter for the language spinner
-        LanguageAdapter adapter = new LanguageAdapter(this);
-        appLanguageSpinner.setAdapter(adapter);
-        speechLanguageSpinner.setAdapter(adapter);
+        LanguageAdapter adapter_speech = new LanguageAdapter(this);
+        LanguageAdapter adapter_app = new LanguageAdapter(this);
+
+        appLanguageSpinner.setAdapter(adapter_app);
+        speechLanguageSpinner.setAdapter(adapter_speech);
 
         // Set the selected language in the spinner
-        String currentLanguage = LocalizationHelper.getCurrentLanguage(this);
-        int languageIndex = adapter.getPosition(currentLanguage);
+        int languageIndex = adapter_app.getPosition(appLanguage_locale_value);
         appLanguageSpinner.setSelection(languageIndex);
 
-        String currentSpeechLanguage = speechLanguage_value;
-        int speechLanguageIndex = adapter.getPosition(currentSpeechLanguage);
+        int speechLanguageIndex = adapter_speech.getPosition(speechLanguage_locale_value);
         speechLanguageSpinner.setSelection(speechLanguageIndex);
 
         appLanguageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedLanguageLocale = (String) adapter.getItem(position);
+                String selectedLanguageLocale = (String) adapter_app.getItem(position);
                 LocaleListCompat appLocale = LocaleListCompat.forLanguageTags(selectedLanguageLocale);
+                Log.e("appLocale", appLocale.toString());
+//                Toast.makeText(SettingsActivity.this, "App Language Changed to: " + appLanguage_locale_value, Toast.LENGTH_SHORT).show();;
+                saveAppLanguageLocaleToSharedPreferences();
                 // Call this on the main thread as it may require Activity.restart()
                 AppCompatDelegate.setApplicationLocales(appLocale);
             }
@@ -69,8 +76,8 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                speechLanguage_value = (String) adapter.getItem(position);
-                Log.w("TAG", "Speech Language Changed to: " + speechLanguage_value);
+                speechLanguage_locale_value = (String) adapter_speech.getItem(position);
+//                Toast.makeText(SettingsActivity.this, "Speech Language Changed to: " + speechLanguage_locale_value, Toast.LENGTH_SHORT).show();;
                 saveSpeechLanguageLocaleToSharedPreferences();
             }
 
@@ -86,7 +93,12 @@ public class SettingsActivity extends AppCompatActivity {
     // Method to save the rate to SharedPreferences
     private void saveSpeechLanguageLocaleToSharedPreferences() {
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(SPEECH_LANG_KEY, speechLanguage_value);
+        editor.putString(SPEECH_LANG_KEY, speechLanguage_locale_value);
+        editor.apply();
+    }
+    private void saveAppLanguageLocaleToSharedPreferences() {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(APP_LANG_KEY, appLanguage_locale_value);
         editor.apply();
     }
 }
