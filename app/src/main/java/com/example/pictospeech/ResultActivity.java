@@ -45,15 +45,14 @@ public class ResultActivity extends AppCompatActivity {
     GenerativeModelFutures model;
     String enhance_prompt = "Make the following text to be grammatically correct and coherent. " +
             "Return plain text with no formatting." +
-            "Replace the misspelled words with the closest correct word." +
-            "At the very end, write a short sentence about the what the text is about:\n";
+            "Replace the misspelled words with the closest correct word:\n";
     String executingPrompt;
 
     String responseLanguage;
 
     // TODO: Come up with better prompts
     String explain_prompt = "The following text is the result from an OCR operation. What do you think the " +
-            "following text is trying to say and what it is about . Return a plain text with no formatting:\n";
+            "following text is trying to say and what it is about. Return a plain text with no formatting:\n";
 
     String summarize_prompt = "Summarize the following text:\n";
 
@@ -77,9 +76,6 @@ public class ResultActivity extends AppCompatActivity {
         // Initialize Gemini Model
         gm = new GenerativeModel("gemini-1.5-flash", apiKey);
         model = GenerativeModelFutures.from(gm);
-
-        // Modify the prompt to include the speech language
-        // prompt = "Return a response in the following language: (" + speechLanguage_value + ")\n" + prompt + resultString;
 
         // Restore speechLanguageLocale_value and speech rate from SharedPreferences
         speechRate = prefs.getFloat(RATE_KEY, speechRate);
