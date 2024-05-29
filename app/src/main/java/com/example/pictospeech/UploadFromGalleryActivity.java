@@ -26,6 +26,7 @@ package com.example.pictospeech;
 
         import java.io.FileNotFoundException;
         import java.io.InputStream;
+        import java.util.concurrent.ExecutionException;
 
 public class UploadFromGalleryActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -57,8 +58,6 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
-
-
 
 
     @Override
@@ -164,9 +163,6 @@ public class UploadFromGalleryActivity extends AppCompatActivity {
                 result.append(Character.toLowerCase(c));
             }
         }
-
         return result.toString();
-
     }
-
 }

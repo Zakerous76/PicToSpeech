@@ -9,21 +9,20 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="175dp"
         android:layout_marginVertical="5dp"
-        app:layout_constraintBottom_toTopOf="@id/copy_to_clipboard_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/result_edit_text"
+        <TextView
+            android:id="@+id/result_text_view"
             style="@android:style/Widget.DeviceDefault.Light.EditText"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="0dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -33,6 +32,7 @@
             android:importantForAutofill="no"
             android:justificationMode="inter_word"
             android:singleLine="false"
+            android:text="Result_Text_View"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toTopOf="@+id/copy_to_clipboard_btn"
@@ -40,46 +40,107 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.0" />
 
-            />
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginTop="176dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView1">
+
+        <TextView
+            android:id="@+id/gemini_response_text_view"
+            style="@android:style/Widget.DeviceDefault.Light.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:accessibilityLiveRegion="polite"
+            android:contentDescription="@string/result_edit_text_content_description"
+            android:importantForAutofill="no"
+            android:justificationMode="inter_word"
+            android:singleLine="false"
+            android:text="AI_Result_Text_View\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_body"
+            android:layout_gravity="top"
+
+            app:layout_constraintVertical_bias="0.0" />
 
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/copy_to_clipboard_btn"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="25dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="20dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/result_edit_text"
         android:background="@color/color_green_light"
         android:text="@string/copy_to_clipboard"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintBottom_toTopOf="@+id/read_aloud_btn"
         app:layout_constraintEnd_toEndOf="@id/read_aloud_btn"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBounds,VisualLintButtonSize"
-        android:accessibilityLiveRegion="polite"
-        android:accessibilityTraversalAfter="@id/result_edit_text"
-        />
+        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/read_aloud_btn"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="20dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/copy_to_clipboard_btn"
         android:background="@color/button_color1"
         android:text="@string/read_aloud"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/explain_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/explain_btn"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="20dp"
         android:accessibilityLiveRegion="polite"
         android:accessibilityTraversalAfter="@id/copy_to_clipboard_btn"
-        />
+        android:background="@color/button_color1"
+        android:text="Explain"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/summarize_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/summarize_btn"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:accessibilityLiveRegion="polite"
+        android:accessibilityTraversalAfter="@id/copy_to_clipboard_btn"
+        android:background="@color/button_color1"
+        android:text="Summarize"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
