@@ -19,6 +19,7 @@ import androidx.core.content.FileProvider;
 
 import com.google.firebase.components.BuildConfig;
 import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
@@ -116,8 +117,10 @@ public class TakePhotoActivity extends AppCompatActivity {
         recognizer.process(image)
                         .addOnSuccessListener(visionText -> {
                             // Task completed successfully
-                            resultString = visionText.getText();
-                            Log.d(TAG, "getTextFromImage: " + resultString);
+                            for (Text.TextBlock block : visionText.getTextBlocks()) {
+                                String blockText = cleanText(block.getText());
+                                resultString += blockText + "\n";
+                            }
                             sendResultString();
                         })
                         .addOnFailureListener(
@@ -144,6 +147,45 @@ public class TakePhotoActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         return imageFile;
+    }
+    // TODO: implement this if needed
+    public String cleanText(String text){
+        // Replace multiple spaces with a single space
+        text = text.replaceAll("\\s+", " ");
+        text = text.trim();
+//        return toSentenceCase(text);
+        return toWordSentenceCase(text);
+    }
+    public String toSentenceCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        // Convert the entire string to lowercase first
+        String lowerCased = input.toLowerCase();
+        // Capitalize the first letter
+        return lowerCased.substring(0, 1).toUpperCase() + lowerCased.substring(1);
+    }
+
+    public String toWordSentenceCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+
+        StringBuilder result = new StringBuilder(input.length());
+        boolean capitalizeNext = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                capitalizeNext = true;
+                result.append(c);
+            } else if (capitalizeNext) {
+                result.append(Character.toUpperCase(c));
+                capitalizeNext = false;
+            } else {
+                result.append(Character.toLowerCase(c));
+            }
+        }
+        return result.toString();
     }
 
 }
