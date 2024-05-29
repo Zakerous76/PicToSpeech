@@ -61,7 +61,9 @@
         app:layout_constraintEnd_toEndOf="@id/read_aloud_btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
+        tools:ignore="VisualLintBounds,VisualLintButtonSize"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -78,7 +80,9 @@
         app:layout_constraintBottom_toTopOf="@+id/enhance_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/enhance_btn"
@@ -94,7 +98,9 @@
         app:layout_constraintBottom_toTopOf="@+id/summarize_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/summarize_btn"
@@ -110,7 +116,9 @@
         app:layout_constraintBottom_toTopOf="@+id/explain_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -127,7 +135,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,9 @@
         app:layout_constraintEnd_toEndOf="@id/read_aloud_btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBounds,VisualLintButtonSize" />
+        tools:ignore="VisualLintBounds,VisualLintButtonSize"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/read_aloud_btn"
@@ -76,7 +78,9 @@
         app:layout_constraintBottom_toTopOf="@+id/more_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/more_btn"
@@ -92,7 +96,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
 

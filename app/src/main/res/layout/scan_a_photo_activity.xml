@@ -21,7 +21,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:accessibilityTraversalAfter="@id/scan_a_photo_tv"/>
+        android:accessibilityTraversalAfter="@id/scan_a_photo_tv"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <TextView
         android:id="@+id/scan_a_photo_tv"
@@ -56,7 +58,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

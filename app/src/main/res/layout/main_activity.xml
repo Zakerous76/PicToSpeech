@@ -20,7 +20,9 @@
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
     <TextView
         android:id="@+id/app_name_title_txtV"
@@ -67,7 +69,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

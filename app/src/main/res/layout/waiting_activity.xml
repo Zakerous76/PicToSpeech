@@ -73,7 +73,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/cancel"
         android:textColor="@color/white"
-        android:textSize="@dimen/button_text_size"/>
+        android:textSize="@dimen/button_text_size"
+        android:stateListAnimator="@animator/button_tap_effect"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
