@@ -44,17 +44,18 @@ public class MoreAIActivity extends AppCompatActivity {
     GenerativeModel gm;
     GenerativeModelFutures model;
     String responseLanguage;
-    String originalLanguagePrompt = "Respond with the language of the text.";
+    String originalLanguagePrompt = "Respond with the language of the text without translating it to English.";
     String executingPrompt;
     String enhance_prompt = "Make the following text to be grammatically correct and coherent. " +
             "Return plain text with no formatting." +
-            "Replace the misspelled words with the closest correct word:\n";
+            "Replace the misspelled words with the closest correct word. " +
+            "Respond with the original language of the text:\n";
 
     // TODO: Come up with better prompts
     String explain_prompt = "The following text is the result from an OCR operation. What do you think the " +
-            "following text is trying to say and what it is about. Return a plain text with no formatting:\n";
-    String summarize_prompt = "Summarize the following text:\n";
-    private String speechString;
+            "following text is trying to say and what it is about. Return a plain text with no styling:\n";
+    String summarize_prompt = "Summarize the following text with the context in mind:\n";
+    private String displayString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class MoreAIActivity extends AppCompatActivity {
         setContentView(R.layout.more_ai_activity);
 
         resultString = getIntent().getStringExtra("resultString");
-        speechString = resultString;
+        displayString = resultString;
 
         geminiResponseTextView = findViewById(R.id.result_text_view);
         copyToClipboardBtn = findViewById(R.id.copy_to_clipboard_btn);
@@ -84,7 +85,7 @@ public class MoreAIActivity extends AppCompatActivity {
         speechRate = prefs.getFloat(RATE_KEY, speechRate);
         speechLanguage_value = prefs.getString(SPEECH_LANG_KEY, speechLanguage_value);
 
-        responseLanguage = "Return response in the following language: (" + speechLanguage_value + ")";
+        responseLanguage = "Return response in the (" + speechLanguage_value + ") language.";
         // Specify the package name for Google's TTS engine
         String googleTTSEnginePackageName = "com.google.android.tts";
         textToSpeech = new TextToSpeech(this, status -> {
@@ -112,7 +113,7 @@ public class MoreAIActivity extends AppCompatActivity {
             ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
             // Create a ClipData object to store the text
-            ClipData clipData = ClipData.newPlainText("label", resultString);
+            ClipData clipData = ClipData.newPlainText("label", displayString);
 
             // Set the ClipData object to the clipboard
             clipboardManager.setPrimaryClip(clipData);
@@ -126,7 +127,7 @@ public class MoreAIActivity extends AppCompatActivity {
             if(resultString.isEmpty()){
                 resultTextView.setError("No text recognized");
             } else {
-                textToSpeech.speak(speechString, TextToSpeech.QUEUE_FLUSH, null, null);
+                textToSpeech.speak(displayString, TextToSpeech.QUEUE_FLUSH, null, null);
                 Toast.makeText(getApplicationContext(), "Please wait for the response...", Toast.LENGTH_SHORT).show();
             }
         });
@@ -156,7 +157,7 @@ public class MoreAIActivity extends AppCompatActivity {
         enhanceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                executingPrompt = responseLanguage+enhance_prompt+resultString;
+                executingPrompt = enhance_prompt+resultString;
                 new GenerateContentTask().execute();
                 Toast.makeText(getApplicationContext(), "Please wait while we are ENHANCING the text...", Toast.LENGTH_LONG).show();
 
@@ -198,7 +199,7 @@ public class MoreAIActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             // Update the UI with the result text
-            speechString = result;
+            displayString = result;
             geminiResponseTextView.setText(result.strip());
         }
     }
