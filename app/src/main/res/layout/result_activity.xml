@@ -91,7 +91,7 @@
         android:accessibilityLiveRegion="polite"
         android:accessibilityTraversalAfter="@id/copy_to_clipboard_btn"
         android:background="@color/button_color1"
-        android:text="More (AI)"
+        android:text="@string/more_ai"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
